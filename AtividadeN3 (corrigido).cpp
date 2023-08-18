@@ -22,16 +22,14 @@ struct Conjunto {
 
     void ler() {
         criar();
-        int qtd;
         do {
             printf("Informe a quantidade de elementos do conjunto (maximo 20): ");
-        } while (!lerInteiro(&qtd) || qtd < 0 || qtd > 20);
+        } while (!lerInteiro(&tamanho) || tamanho < 0 || tamanho > 20);
 
-        for (int i = 0; i < qtd; i++) {
+        for (int i = 0; i < tamanho; i++) {
             do {
                 printf("Elemento %d: ", i+1);
             } while (!lerInteiro(&elementos[i]));
-            tamanho++;
         }
     }
 
@@ -76,14 +74,7 @@ struct Conjunto {
             return false;
         }
         for(int i = 0; i < tamanho; i++) {
-            bool existe = false;
-            for(int j = 0; j < outro.tamanho; j++) {
-                if(elementos[i] == outro.elementos[j]) {
-                    existe = true;
-                    break;
-                }
-            }
-            if(!existe) {
+            if(elementos[i] != outro.elementos[i]) {
                 return false;
             }
         }
